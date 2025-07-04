@@ -67,18 +67,18 @@
 // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,   |  .  |  /  | ESC  |
 //                  |    CMD | SPC | lt |   | lt  | BSPC | htsl |
             bindings = <
-   &kp ESC    &kp Q &kp W &kp E &kp R &kp T               &kp Y &kp U  &kp I     &kp O    &kp P         &kp C_VOL_DN
-   &kp LSHIFT &kp A &kp S &kp D &kp F &kp G               &kp H &kp J  &kp K     &kp L    &kp SEMI      &kp RSFT
+   &kp ESC    &kp Q &kp W &kp E &kp R &kp T               &kp Y &kp U  &kp I     &kp O    &kp P         &kp BSPC
+   &kp LSHIFT &kp A &kp S &kp D &kp F &kp G               &kp H &kp J  &kp K     &kp L    &kp SEMI      &kp ENTER
    &kp LCTRL  &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M  &kp COMMA &kp DOT  &kp FSLH      &kp RALT
 
-           &kp LCMD  &kp SPC  &lt NAVNUM TAB              &lt SYMBOLS ENTER      &kp BSPC    &HTSL RCMD OSL
+           &kp LCMD  &kp SPC  &lt NAVNUM TAB              &lt SYMBOLS ENTER      &kp LSHIFT  &HTSL RCMD OSL
             >;
         };
         navnum_layer {
             label = "NVNM";
             bindings = <
-   &trans  &none &kp KP_N7 &kp KP_N8 &kp KP_N9 &LOCK             &NEW_TAB    &kp G           &kp AMPS     &kp KP_N0  &none     &kp C_VOL_UP
-   &trans  &none &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0         &none       &kp LEFT        &kp DOWN     &kp UP     &kp RIGHT &trans
+   &trans  &none &kp KP_N7 &kp KP_N8 &kp KP_N9 &LOCK             &NEW_TAB    &kp G           &kp AMPERSAND &kp KP_N0  &none     &kp C_VOL_UP
+   &trans  &none &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0         &none       &kp LEFT        &kp DOWN     &kp UP     &kp RIGHT &kp C_VOL_DN
    &trans  &none &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp X             &kp EQUAL   &kp KP_ASTERISK &kp KP_MINUS &kp PLUS   &kp SLASH &trans
 
                                    &trans &trans &trans          &trans &trans &trans
@@ -88,7 +88,7 @@
     	symbols_layer {
             label = "SYM";
             bindings = < 
-   &trans     &kp COLON &kp AMPS   &kp LT   &kp GT   &kp PRCNT     &kp TILDE  &kp LBRC        &kp RBRC     &kp PIPE  &kp EXCL  &kp C_VOL_UP
+   &trans     &kp COLON &kp AMPS   &kp LT   &kp GT   &kp PRCNT     &kp TILDE  &kp LBRC        &kp RBRC     &kp PIPE  &kp EXCL  &none
    &trans     &kp SEMI  &kp DOLLAR &kp LPAR &kp RPAR &kp SQT       &kp DQT    &kp LBKT        &kp RBKT     &kp UNDER &kp BSLH  &trans
    &trans     &none     &kp CARET  &kp AT   &kp HASH &kp GRAVE     &kp EQUAL  &kp KP_ASTERISK &kp KP_MINUS &kp PLUS  &kp SLASH &trans
 
