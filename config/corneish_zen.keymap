@@ -98,7 +98,7 @@
    &trans   &kp LG(LS(N5))  &kp LC(LEFT)    &kp LC(UP)  &kp LC(RIGHT)   &kp LG(LS(N4))      &none   &kp F7  &kp F8  &kp F9  &kp F12 &bt BT_PRV
    &kp CAPS &kp LG(Z)       &kp LG(X)       &kp LG(C)   &kp LG(V)       &kp LG(LA(LS(V)))   &none   &kp F4  &kp F5  &kp F6  &kp F11 &bt BT_NXT
    &trans   &none           &kp LG(B)       &kp LG(I)   &kp LG(U)       &none               &none   &kp F1  &kp F2  &kp F3  &kp F10 &bt BT_CLR
-                                            &trans      &to WORKMAN     &to NAVNUM          &to SYMBOLS  &trans  &trans
+                                            &trans      &to QWERTY     &to NAVNUM          &to SYMBOLS  &trans  &trans
                     >;
                 };
 		};
