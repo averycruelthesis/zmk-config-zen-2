@@ -2,18 +2,21 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define WORKMAN 0
+#define NAVNUM  1
+#define SYMBOLS 2
+#define OSL     3
+
 / {
-    chosen {
-        zmk,physical-layout = &foostan_corne_6col_layout;
-        // zmk,physical-layout = &foostan_corne_5col_layout;
-    };
+  chosen {
+    zmk,matrix_transform = &default_transform;
+    //zmk,matrix_transform = &five_column_transform;
+  };
 };
 
 / {
-    behaviors
-    {
-            HTSL: holdtap_stickylayer
-            {
+    behaviors {
+            HTSL: holdtap_stickylayer {
                 compatible = "zmk,behavior-hold-tap";
                 label = "HTSL";
                 #binding-cells = <2>;
@@ -22,11 +25,9 @@
                 flavor = "hold-preferred";
                 bindings = <&kp>, <&sl>;
             };
-    };
-    macros
-    {
-        LOCK: LOCK
-        {
+        };
+    macros {
+        LOCK: LOCK {
             label = "LOCK";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -48,30 +49,35 @@
                 , <&macro_release &kp LCMD>
                 ;
         };
+        CTAGS_NEXT: CTAGS_NEXT {
+            label = "CTAGS_NEXT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press   &kp LCTRL>
+                , <&macro_tap     &kp LBKT>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
     };
-/ {
-    keymap {
+	keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "QWERTY";
-// --------------------------------------------------------------------------------
-// | ESC  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I   |  O  |  P  | BSPC |
-// | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K   |  L  |  ;  |  '   |
-// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,   |  .  |  /  | ESC  |
-//                  |    CMD | SPC | lt |   | lt  | BSPC | htsl |
+            label = "WKMAN";
             bindings = <
-   &kp ESC    &kp Q &kp W &kp E &kp R &kp T               &kp Y &kp U  &kp I     &kp O    &kp P         &kp C_VOL_DN
-   &kp LSHIFT &kp A &kp S &kp D &kp F &kp G               &kp H &kp J  &kp K     &kp L    &kp SEMI      &kp RSFT
-   &kp LCTRL  &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M  &kp COMMA &kp DOT  &kp FSLH      &kp RALT
-           &kp LCMD  &kp SPC  &lt NAVNUM TAB           &lt SYMBOLS ENTER      &kp BSPC &HTSL RCMD OSL
-            >;
-        };
+   &kp ESC   &kp Q &kp D &kp R &kp W &kp B                      &kp J  &kp F  &kp U    &kp P    &kp EXCL   &kp C_VOL_DN
+   &kp LSHFT &kp A &kp S &kp H &kp T &kp G                      &kp Y  &kp N  &kp E    &kp O    &kp I      &kp RSFT
+   &kp LCTRL &kp Z &kp X &kp M &kp C &kp V                      &kp K  &kp L  &kp CMMA &kp DOT  &kp QMARK  &kp RALT
+          &kp LCMD  &kp SPC  &lt NAVNUM TAB                     &lt SYMBOLS ENTER      &kp BSPC &HTSL RCMD OSL
+                        >;
+                };
+
         navnum_layer {
             label = "NVNM";
             bindings = <
    &trans  &none &kp KP_N7 &kp KP_N8 &kp KP_N9 &LOCK             &NEW_TAB    &kp G           &kp AMPS     &kp KP_N0  &none     &kp C_VOL_UP
-   &trans  &none &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0         &none       &kp LEFT        &kp DOWN     &kp UP     &kp RIGHT &trans
+   &trans  &none &kp KP_N4 &kp KP_N5 &kp KP_N6 &kp KP_N0         &CTAGS_NEXT &kp LEFT        &kp DOWN     &kp UP     &kp RIGHT &trans
    &trans  &none &kp KP_N1 &kp KP_N2 &kp KP_N3 &kp X             &kp EQUAL   &kp KP_ASTERISK &kp KP_MINUS &kp PLUS   &kp SLASH &trans
                                    &trans &trans &trans          &trans &trans &trans
                         >;
@@ -95,5 +101,6 @@
                                             &trans      &to WORKMAN     &to NAVNUM          &to SYMBOLS  &trans  &trans
                     >;
                 };
-		};
+
+        };
 };
